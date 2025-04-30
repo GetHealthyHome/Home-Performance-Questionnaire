@@ -251,27 +251,27 @@ button:hover {
 <label>What year was your home built?</label>
 <input type="text" name="HomeBuilt">
 
-<label>Are you aware of asbestos-containing materials?</label>
+<label>Are you aware of any asbestos in your home?</label>
 <select name="Asbestos">
   <option value="">Select...</option>
   <option value="Yes">Yes</option>
   <option value="No">No</option>
 </select>
 
-<label>Estimated finished square footage:</label>
+<label>What is the estimated square footage of the finished spaces in your home?</label>
 <input type="text" name="SquareFootage">
 
 <label>How old is your roof?</label>
 <input type="text" name="RoofAge">
 
-<label>Have you experienced roof leaks?</label>
+<label>Does your roof leak during any time of the year?</label>
 <select name="RoofLeaks">
   <option value="">Select...</option>
   <option value="Yes">Yes</option>
   <option value="No">No</option>
 </select>
 
-<label>Do icicles form on eaves during the winter?</label>
+<label>Do icicles form on the eaves or in the attic during the winter?</label>
 <select name="Icicles">
   <option value="">Select...</option>
   <option value="Yes">Yes</option>
@@ -286,19 +286,24 @@ button:hover {
 <label>Thermostat Winter Set Point:</label>
 <input type="text" name="TstatWinter">
 
-<label>Type of Heating Fuel:</label>
-<input type="text" name="HeatingFuel">
+<label>What type of fuel do you us to heat your home?</label>
+<div class="checkbox-group">
+  <label><input type="checkbox" name="HeatFuel" value="Oil"> ConEd</label>
+  <label><input type="checkbox" name="HeatFuel" value="Electricity"> NYSEG</label>
+  <label><input type="checkbox" name="HeatFuel" value="Natural Gas"> Central Hudson</label>
+  <label><input type="checkbox" name="HeatFuel" value="Propane"> Other</label>
+</div>
 
-<label>Fuel Provider:</label>
+<label>Name of Provider</label>
 <input type="text" name="FuelProvider">
 
-<label>Cooling System Type:</label>
+<label>What type of cooling system do you have?</label>
 <input type="text" name="CoolingType">
 
 <label>How often do you change filters?</label>
 <input type="text" name="FilterFrequency">
 
-<label>Electric Utility Provider:</label>
+<label>Who is your electric utility supplier?</label>
 <div class="checkbox-group">
   <label><input type="checkbox" name="ElectricUtility" value="ConEd"> ConEd</label>
   <label><input type="checkbox" name="ElectricUtility" value="NYSEG"> NYSEG</label>
@@ -308,7 +313,7 @@ button:hover {
 
 <h2>Other Information</h2>
 
-<label>Is there anything else you would like us to know?</label>
+<label>Is there any other information you feel we should know about?</label>
 <textarea name="OtherComments"></textarea>
 
 <div class="submit-button">
