@@ -326,42 +326,47 @@ button:hover {
 <div class="submit-button">
   <button type="submit">Submit</button>
 </div>
-
 </form>
 
-  <div class="powered-by">
-    Powered by Healthy Home Energy & Consulting
-  </div>
+<!-- ✅ Success message shown after submission -->
+<div id="successMessage" style="text-align:center; color:#4CAF50; font-weight:bold; margin-top:20px; display:none;">
+  ✅ Thank you for completing your Home Performance Evaluation! Our team will review your information and be in touch shortly.
+</div>
 
-  <script>
-    const form = document.getElementById('heatPumpForm');
+<div class="powered-by">
+  Powered by Get Healthy Home
+</div>
 
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
+<script>
+const form = document.getElementById('homePerformanceForm');
 
-      alert('Thank you for completing your Home Performance Evaluation! Our team will review your information and be in touch shortly.');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
 
-      const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => {
-        if (data[key]) {
-          data[key] += `, ${value}`;
-        } else {
-          data[key] = value;
-        }
-      });
+  document.getElementById('successMessage').style.display = 'block';
 
-      fetch('https://script.google.com/macros/s/AKfycbwRoHmHnIfN2_ldceYzfvcr1xkL1gPnlfenndrV5xJxYOPQyMPDiQsnVjtioCrSauVghw/exec', {
-  method: 'POST',
-  mode: 'no-cors',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(data)
+  const formData = new FormData(form);
+  const data = {};
+  formData.forEach((value, key) => {
+    if (data[key]) {
+      data[key] += `, ${value}`;
+    } else {
+      data[key] = value;
+    }
+  });
+
+  fetch('https://script.google.com/macros/s/AKfycbwRoHmHnIfN2_ldceYzfvcr1xkL1gPnlfenndrV5xJxYOPQyMPDiQsnVjtioCrSauVghw/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+
+  form.reset();
 });
-      form.reset();
-    });
-  </script>
+</script>
 
 </body>
 </html>
