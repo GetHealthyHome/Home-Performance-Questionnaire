@@ -157,7 +157,39 @@ button:hover {
     <label><input type="checkbox" name="ImprovementBenefits" value="Durability of Improvements"> Durability of Improvements</label>
     <label><input type="checkbox" name="ImprovementBenefits" value="Sound Attenuation"> Sound Attenuation</label>
   </div>
-<label>Does your home feel stuffy?</label>
+<h2>Home Comfort & Household Information</h2>
+
+<label>Have you taken any steps to improve your home’s indoor air quality, comfort, or efficiency?</label>
+<select name="StepsToImprove">
+  <option value="">Select...</option>
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select>
+
+<label>If so, what have you done?</label>
+<textarea name="PastSteps"></textarea>
+
+<label>What improvements would you like to make to your home?</label>
+<textarea name="TodoImprovements"></textarea>
+
+<label>How long have you lived here?</label>
+<input type="text" name="YearsLived">
+
+<label>How many people live in your home?</label>
+<input type="number" name="PeopleCount">
+
+<label>How many and what kind of pets live here?</label>
+<input type="text" name="Pets">
+
+<label>How long do you plan on living in this home?</label>
+<div class="checkbox-group">
+  <label><input type="checkbox" name="StayDuration" value="Less than 5 years"> Less than 5 years</label>
+  <label><input type="checkbox" name="StayDuration" value="5 to 10 years"> 5 to 10 years</label>
+  <label><input type="checkbox" name="StayDuration" value="More than 10 years"> More than 10 years</label>
+</div>
+
+  
+  <label>Does your home feel stuffy?</label>
 <select name="StuffyAir">
   <option value="">Select...</option>
   <option value="Yes">Yes</option>
@@ -183,6 +215,18 @@ button:hover {
 <label>If so, where and when?</label>
 <textarea name="RoomTempLocations"></textarea>
 
+  <label>Do you find your home:</label>
+<div class="checkbox-group">
+  <label><input type="checkbox" name="SeasonalHumidity" value="Humid in the summer"> Humid in the summer</label>
+  <label><input type="checkbox" name="SeasonalHumidity" value="Dry in the winter"> Dry in the winter</label>
+</div>
+
+<label>Does anyone in your home suffer from:</label>
+<div class="checkbox-group">
+  <label><input type="checkbox" name="HealthIssues" value="Allergies"> Allergies</label>
+  <label><input type="checkbox" name="HealthIssues" value="Asthma"> Asthma</label>
+  <label><input type="checkbox" name="HealthIssues" value="Respiratory Issues"> Respiratory Issues</label>
+</div>
 <h2>Building & Roofing Information</h2>
 
 <label>What year was your home built?</label>
