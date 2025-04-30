@@ -300,7 +300,12 @@ button:hover {
 <input type="text" name="FuelProvider">
 
 <label>What type of cooling system do you have?</label>
-<input type="text" name="CoolingType">
+<div class="checkbox-group">
+  <label><input type="checkbox" name="CoolingSystem" value="Central A/C"> Central A/C</label>
+  <label><input type="checkbox" name="CoolingSystem" value="Window"> Window</label>
+  <label><input type="checkbox" name="CoolingSystem" value="Ductless Minisplit"> Ductless Minisplit</label>
+  <label><input type="checkbox" name="CoolingSystem" value="None"> None</label>
+</div>
 
 <label>How often do you change filters?</label>
 <input type="text" name="FilterFrequency">
