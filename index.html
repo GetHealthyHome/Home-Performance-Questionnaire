@@ -384,34 +384,42 @@
 </div>
 
 <script>
-const form = document.getElementById('homePerformanceForm');
+  const form = document.getElementById('homePerformanceForm');
+  const successMsg = document.getElementById('successMessage');
 
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
 
-  const formData = new FormData(form);
-  const data = {};
-  formData.forEach((value, key) => {
-    if (data[key]) {
-      data[key] += `, ${value}`;
-    } else {
-      data[key] = value;
-    }
-  });
+    // 1. Collect Data
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => {
+      if (data[key]) {
+        data[key] += `, ${value}`;
+      } else {
+        data[key] = value;
+      }
+    });
 
-  fetch('https://script.google.com/macros/s/AKfycbzPBVNrrLXncCdoP7gddR4Asd6OmH5eJMxIfnTlvX6cxZYK2eUby91ggTaNzD8Hf4yD/exec', {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  }).then(() => {
-    document.getElementById('successMessage').style.display = 'block';
-    form.reset();
+    // 2. Submit Data
+    fetch('https://script.google.com/macros/s/AKfycbzPBVNrrLXncCdoP7gddR4Asd6OmH5eJMxIfnTlvX6cxZYK2eUby91ggTaNzD8Hf4yD/exec', {
+      method: 'POST',
+      mode: 'no-cors', // Google Apps Script requires no-cors for simple fetches
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+    // 3. UI Response 
+    // We move this outside the .then() because no-cors won't return a 'success' state to Javascript
+    successMsg.style.display = 'block';
+    form.style.display = 'none'; // Hide the form so they know it's done
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Optional: Reset form in background
+    form.reset();
   });
-});
 </script>
 
 </body>
