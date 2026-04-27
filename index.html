@@ -5,116 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Performance Questionnaire</title>
   <style>
-input, select, textarea {
-  margin-bottom: 15px;
-} 
-  body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f8fdf8;
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 22px;
-  }
-form {
-  max-width: 800px;
-  margin: auto;
-  background: white;
-  padding: 20px; /* was 25px — slightly tighter form body */
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
-
-label {
-  font-weight: bold;
-  display: block;
-  margin-top: 10px; /* was 20px */
-  margin-bottom: 3px; /* was 5px */
-}
-
-input, select, textarea {
-  width: 100%;
-  padding: 8px 10px;
-  margin-top: 2px;
-  margin-bottom: 8px; /* was 10-15px — now tighter */
-  box-sizing: border-box;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-textarea {
-  resize: vertical;
-  min-height: 80px;
-}
-
-.checkbox-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 0;
-  margin-left: 0;
-  gap: 4px; /* was 6px — even tighter */
-}
-
-.checkbox-group label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 2px 0; /* was 4px — less vertical space */
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.checkbox-group input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  transform: translateY(2px);
-}
-
-.submit-button {
-  margin-top: 20px; /* slightly tighter between last field and submit */
-  text-align: center;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: white;
-  color: #54b948;
-  border: 2px solid #54b948;
-  border-radius: 8px;
-  transition: 0.3s ease;
-}
-
-button:hover {
-  background-color: #c9f3c2;
-  color: black;
-}
-
-.powered-by {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 0.9em;
-  color: #54b948;
-}
-
-  @media (max-width: 600px) {
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f8fdf8;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+    h2 {
+      border-bottom: 2px solid #54b948;
+      padding-bottom: 5px;
+      margin-top: 30px;
+      color: #2c3e50;
+      font-size: 1.2em;
+    }
     form {
-      padding: 15px;
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 3px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 2px;
+      margin-bottom: 8px;
+      box-sizing: border-box;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    /* Layout Helpers for Split Fields */
+    .form-row {
+      display: flex;
+      gap: 15px;
+    }
+    .form-group {
+      flex: 1;
+    }
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
     }
     .checkbox-group label {
-      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 2px 0;
+      font-weight: normal;
+      font-size: 15px;
     }
-  }
-</style>
-
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-bottom: 0;
+    }
+    .submit-button {
+      margin-top: 20px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: white;
+      color: #54b948;
+      border: 2px solid #54b948;
+      border-radius: 8px;
+      transition: 0.3s ease;
+    }
+    button:hover {
+      background-color: #c9f3c2;
+      color: black;
+    }
+    .powered-by {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #54b948;
+    }
+    @media (max-width: 600px) {
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -122,30 +114,55 @@ button:hover {
 
 <form id="homePerformanceForm">
 
-  <!-- Contact Information -->
-  <label>Name:</label>
-  <input type="text" name="Name" required>
+  <div class="form-row">
+    <div class="form-group">
+      <label>First Name:</label>
+      <input type="text" name="FirstName" required>
+    </div>
+    <div class="form-group">
+      <label>Last Name:</label>
+      <input type="text" name="LastName" required>
+    </div>
+  </div>
 
-  <label>Address:</label>
-  <input type="text" name="Address" required>
+  <label>Street Address:</label>
+  <input type="text" name="Street" required>
+
+  <div class="form-row">
+    <div class="form-group" style="flex: 2;">
+      <label>City:</label>
+      <input type="text" name="City" required>
+    </div>
+    <div class="form-group">
+      <label>State:</label>
+      <input type="text" name="State" placeholder="NY" required>
+    </div>
+    <div class="form-group">
+      <label>Zip Code:</label>
+      <input type="text" name="Zip" required>
+    </div>
+  </div>
 
   <label>Email:</label>
   <input type="email" name="Email" required>
 
-  <label>Primary Phone:</label>
-  <input type="tel" name="PrimaryPhone">
+  <div class="form-row">
+    <div class="form-group">
+      <label>Primary Phone:</label>
+      <input type="tel" name="PrimaryPhone" required>
+    </div>
+    <div class="form-group">
+      <label>Secondary Phone:</label>
+      <input type="tel" name="SecondaryPhone">
+    </div>
+  </div>
 
-  <label>Secondary Phone:</label>
-  <input type="tel" name="SecondaryPhone">
-
-  <!-- How They Heard About You -->
   <label>How did you hear about Healthy Home Energy & Consulting?</label>
   <input type="text" name="HeardAbout">
 
   <label>What motivated you to get a Healthy Home Evaluation?</label>
   <input type="text" name="PrimaryMotivation">
 
-  <!-- Improvement Benefits -->
   <label>Top 3 Potential Improvement Benefits:</label>
   <div class="checkbox-group">
     <label><input type="checkbox" name="ImprovementBenefits" value="Improved Indoor Air Quality"> Improved Indoor Air Quality</label>
@@ -157,184 +174,212 @@ button:hover {
     <label><input type="checkbox" name="ImprovementBenefits" value="Durability of Improvements"> Durability of Improvements</label>
     <label><input type="checkbox" name="ImprovementBenefits" value="Sound Attenuation"> Sound Attenuation</label>
   </div>
-<h2>Home Comfort & Household Information</h2>
 
-<label>Have you taken any steps to improve your home’s indoor air quality, comfort, or efficiency?</label>
-<select name="StepsToImprove">
-  <option value="">Select...</option>
-  <option value="Yes">Yes</option>
-  <option value="No">No</option>
-</select>
+  <h2>Home Comfort & Household Information</h2>
 
-<label>If so, what have you done?</label>
-<textarea name="PastSteps"></textarea>
+  <label>Have you taken any steps to improve your home’s indoor air quality, comfort, or efficiency?</label>
+  <select name="StepsToImprove">
+    <option value="">Select...</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
 
-<label>What improvements would you like to make to your home?</label>
-<textarea name="TodoImprovements"></textarea>
+  <label>If so, what have you done?</label>
+  <textarea name="PastSteps"></textarea>
 
-<label>How long have you lived here?</label>
-<input type="text" name="YearsLived">
+  <label>What improvements would you like to make to your home?</label>
+  <textarea name="TodoImprovements"></textarea>
 
-<label>How many people live in your home?</label>
-<input type="number" name="PeopleCount">
+  <div class="form-row">
+    <div class="form-group">
+      <label>How long have you lived here?</label>
+      <input type="text" name="YearsLived">
+    </div>
+    <div class="form-group">
+      <label>How many people live in your home?</label>
+      <input type="number" name="PeopleCount">
+    </div>
+  </div>
 
-<label>How many and what kind of pets live here?</label>
-<input type="text" name="Pets">
+  <label>How many and what kind of pets live here?</label>
+  <input type="text" name="Pets">
 
-<label>How long do you plan on living in this home?</label>
-<div class="checkbox-group">
-  <label><input type="checkbox" name="StayDuration" value="Less than 5 years"> Less than 5 years</label>
-  <label><input type="checkbox" name="StayDuration" value="5 to 10 years"> 5 to 10 years</label>
-  <label><input type="checkbox" name="StayDuration" value="More than 10 years"> More than 10 years</label>
-</div>
+  <label>How long do you plan on living in this home?</label>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="StayDuration" value="Less than 5 years"> Less than 5 years</label>
+    <label><input type="checkbox" name="StayDuration" value="5 to 10 years"> 5 to 10 years</label>
+    <label><input type="checkbox" name="StayDuration" value="More than 10 years"> More than 10 years</label>
+  </div>
 
-  
   <label>Does your home feel stuffy?</label>
-<select name="StuffyAir">
-  <option value="">Select...</option>
-  <option value="Yes">Yes</option>
-  <option value="No">No</option>
-</select>
-<label>If so, where and when?</label>
-<textarea name="StuffyLocations"></textarea>
+  <select name="StuffyAir">
+    <option value="">Select...</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
+  <label>If so, where and when?</label>
+  <textarea name="StuffyLocations"></textarea>
 
   <label>Are there drafty areas?</label>
-<select name="DraftyAreas">
-  <option value="">Select...</option>
-  <option value="Yes">Yes</option>
-  <option value="No">No</option>
-</select>
+  <select name="DraftyAreas">
+    <option value="">Select...</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
   <label>If so, where and when?</label>
-<textarea name="DraftLocations"></textarea>
-  
-<label>Is there a moisture or condensation problem in the home?</label>
-<select name="MoistureProblem">
-  <option value="">Select...</option>
-  <option value="Yes">Yes</option>
-  <option value="No">No</option>
-</select>
+  <textarea name="DraftLocations"></textarea>
+    
+  <label>Is there a moisture or condensation problem in the home?</label>
+  <select name="MoistureProblem">
+    <option value="">Select...</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
 
-<label>If so, in what areas of the home?</label>
-<textarea name="MoistureLocations"></textarea>
+  <label>If so, in what areas of the home?</label>
+  <textarea name="MoistureLocations"></textarea>
 
-<label>Have you noticed any mold or musty smells?</label>
-<select name="MoldProblem">
-  <option value="">Select...</option>
-  <option value="Yes">Yes</option>
-  <option value="No">No</option>
-</select>
+  <label>Have you noticed any mold or musty smells?</label>
+  <select name="MoldProblem">
+    <option value="">Select...</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
 
-<label>If so, when and where?</label>
-<textarea name="MoldLocations"></textarea>
+  <label>If so, when and where?</label>
+  <textarea name="MoldLocations"></textarea>
 
-<label>Are any rooms too hot or too cold?</label>
-<div class="checkbox-group">
-  <label><input type="checkbox" name="RoomTemps" value="Too Cold"> Too Cold</label>
-  <label><input type="checkbox" name="RoomTemps" value="Too Warm"> Too Warm</label>
-</div>
+  <label>Are any rooms too hot or too cold?</label>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="RoomTemps" value="Too Cold"> Too Cold</label>
+    <label><input type="checkbox" name="RoomTemps" value="Too Warm"> Too Warm</label>
+  </div>
 
-<label>If so, where and when?</label>
-<textarea name="RoomTempLocations"></textarea>
+  <label>If so, where and when?</label>
+  <textarea name="RoomTempLocations"></textarea>
 
   <label>Do you find your home:</label>
-<div class="checkbox-group">
-  <label><input type="checkbox" name="SeasonalHumidity" value="Humid in the summer"> Humid in the summer</label>
-  <label><input type="checkbox" name="SeasonalHumidity" value="Dry in the winter"> Dry in the winter</label>
-</div>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="SeasonalHumidity" value="Humid in the summer"> Humid in the summer</label>
+    <label><input type="checkbox" name="SeasonalHumidity" value="Dry in the winter"> Dry in the winter</label>
+  </div>
 
-<label>Does anyone in your home suffer from:</label>
-<div class="checkbox-group">
-  <label><input type="checkbox" name="HealthIssues" value="Allergies"> Allergies</label>
-  <label><input type="checkbox" name="HealthIssues" value="Asthma"> Asthma</label>
-  <label><input type="checkbox" name="HealthIssues" value="Respiratory Issues"> Respiratory Issues</label>
-</div>
-<h2>Building & Roofing Information</h2>
+  <label>Does anyone in your home suffer from:</label>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="HealthIssues" value="Allergies"> Allergies</label>
+    <label><input type="checkbox" name="HealthIssues" value="Asthma"> Asthma</label>
+    <label><input type="checkbox" name="HealthIssues" value="Respiratory Issues"> Respiratory Issues</label>
+  </div>
 
-<label>What year was your home built?</label>
-<input type="text" name="HomeBuilt">
+  <h2>Building & Roofing Information</h2>
 
-<label>Are you aware of any asbestos in your home?</label>
-<select name="Asbestos">
+  <div class="form-row">
+    <div class="form-group">
+      <label>What year was your home built?</label>
+      <input type="text" name="HomeBuilt">
+    </div>
+    <div class="form-group">
+      <label>Are you aware of any asbestos?</label>
+      <select name="Asbestos">
+        <option value="">Select...</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+  </div>
+
+  <label>Estimated square footage of the finished spaces:</label>
+  <input type="text" name="SquareFootage">
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>How old is your roof?</label>
+      <input type="text" name="RoofAge">
+    </div>
+    <div class="form-group">
+      <label>Does your roof leak?</label>
+      <select name="RoofLeaks">
+        <option value="">Select...</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+  </div>
+
+  <label>Do icicles form on the eaves or in the attic during the winter?</label>
+  <select name="Icicles">
+    <option value="">Select...</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
+
+  <h2>HVAC & Utilities Information</h2>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>T-Stat Summer Set Point:</label>
+      <input type="text" name="TstatSummer">
+    </div>
+    <div class="form-group">
+      <label>T-Stat Winter Set Point:</label>
+      <input type="text" name="TstatWinter">
+    </div>
+  </div>
+
+  <label>What type of fuel do you use to heat your home?</label>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="HeatFuel" value="Oil"> Oil</label>
+    <label><input type="checkbox" name="HeatFuel" value="Electricity"> Electricity</label>
+    <label><input type="checkbox" name="HeatFuel" value="Natural Gas"> Natural Gas</label>
+    <label><input type="checkbox" name="HeatFuel" value="Propane"> Propane</label>
+  </div>
+
+  <label>Name of Provider</label>
+  <input type="text" name="FuelProvider">
+
+  <label>What type of cooling system do you have?</label>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="CoolingSystem" value="Central A/C"> Central A/C</label>
+    <label><input type="checkbox" name="CoolingSystem" value="Window"> Window</label>
+    <label><input type="checkbox" name="CoolingSystem" value="Ductless Minisplit"> Ductless Minisplit</label>
+    <label><input type="checkbox" name="CoolingSystem" value="None"> None</label>
+  </div>
+
+  <label>How often do you change filters?</label>
+  <input type="text" name="FilterFrequency">
+
+  <label>Who is your electric utility supplier?</label>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="ElectricUtility" value="ConEd"> ConEd</label>
+    <label><input type="checkbox" name="ElectricUtility" value="NYSEG"> NYSEG</label>
+    <label><input type="checkbox" name="ElectricUtility" value="Central Hudson"> Central Hudson</label>
+    <label><input type="checkbox" name="ElectricUtility" value="Other"> Other</label>
+  </div>
+  
+<label>Do you currently have an HVAC Maintenance Plan?</label>
+<select name="HVACMaintenancePlan" required>
   <option value="">Select...</option>
   <option value="Yes">Yes</option>
   <option value="No">No</option>
 </select>
-
-<label>What is the estimated square footage of the finished spaces in your home?</label>
-<input type="text" name="SquareFootage">
-
-<label>How old is your roof?</label>
-<input type="text" name="RoofAge">
-
-<label>Does your roof leak during any time of the year?</label>
-<select name="RoofLeaks">
-  <option value="">Select...</option>
-  <option value="Yes">Yes</option>
-  <option value="No">No</option>
-</select>
-
-<label>Do icicles form on the eaves or in the attic during the winter?</label>
-<select name="Icicles">
-  <option value="">Select...</option>
-  <option value="Yes">Yes</option>
-  <option value="No">No</option>
-</select>
-
-<h2>HVAC & Utilities Information</h2>
-
-<label>Thermostat Summer Set Point:</label>
-<input type="text" name="TstatSummer">
-
-<label>Thermostat Winter Set Point:</label>
-<input type="text" name="TstatWinter">
-
-<label>What type of fuel do you us to heat your home?</label>
-<div class="checkbox-group">
-  <label><input type="checkbox" name="HeatFuel" value="Oil"> Oil</label>
-  <label><input type="checkbox" name="HeatFuel" value="Electricity"> Electricity</label>
-  <label><input type="checkbox" name="HeatFuel" value="Natural Gas"> Natural Gas</label>
-  <label><input type="checkbox" name="HeatFuel" value="Propane"> Propane</label>
 </div>
+  
+  <h2>Other Information</h2>
 
-<label>Name of Provider</label>
-<input type="text" name="FuelProvider">
+  <label>Is there any other information you feel we should know about?</label>
+  <textarea name="OtherComments"></textarea>
 
-<label>What type of cooling system do you have?</label>
-<div class="checkbox-group">
-  <label><input type="checkbox" name="CoolingSystem" value="Central A/C"> Central A/C</label>
-  <label><input type="checkbox" name="CoolingSystem" value="Window"> Window</label>
-  <label><input type="checkbox" name="CoolingSystem" value="Ductless Minisplit"> Ductless Minisplit</label>
-  <label><input type="checkbox" name="CoolingSystem" value="None"> None</label>
-</div>
-
-<label>How often do you change filters?</label>
-<input type="text" name="FilterFrequency">
-
-<label>Who is your electric utility supplier?</label>
-<div class="checkbox-group">
-  <label><input type="checkbox" name="ElectricUtility" value="ConEd"> ConEd</label>
-  <label><input type="checkbox" name="ElectricUtility" value="NYSEG"> NYSEG</label>
-  <label><input type="checkbox" name="ElectricUtility" value="Central Hudson"> Central Hudson</label>
-  <label><input type="checkbox" name="ElectricUtility" value="Other"> Other</label>
-</div>
-
-<h2>Other Information</h2>
-
-<label>Is there any other information you feel we should know about?</label>
-<textarea name="OtherComments"></textarea>
-
-<div class="submit-button">
-  <button type="submit">Submit</button>
-</div>
+  <div class="submit-button">
+    <button type="submit">Submit Questionnaire</button>
+  </div>
 </form>
 
-<!-- ✅ Success message shown after submission -->
-<div id="successMessage" style="text-align:center; color:#4CAF50; font-weight:bold; margin-top:20px; display:none;">
-  ✅ Thank you for completing your Home Performance Evaluation! Our team will review your information and be in touch shortly.
+<div id="successMessage" style="text-align:center; color:#54b948; font-weight:bold; margin-top:20px; display:none;">
+  ✅ Thank you for completing your Home Performance Questionnaire! Our team will review your information and be in touch shortly.
 </div>
 
 <div class="powered-by">
-  Powered by Get Healthy Home
+  Powered by Healthy Home Energy and Consulting Inc.
 </div>
 
 <script>
@@ -342,8 +387,6 @@ const form = document.getElementById('homePerformanceForm');
 
 form.addEventListener('submit', function(event) {
   event.preventDefault();
-
-  document.getElementById('successMessage').style.display = 'block';
 
   const formData = new FormData(form);
   const data = {};
@@ -355,16 +398,18 @@ form.addEventListener('submit', function(event) {
     }
   });
 
-  fetch('https://script.google.com/macros/s/AKfycbwRoHmHnIfN2_ldceYzfvcr1xkL1gPnlfenndrV5xJxYOPQyMPDiQsnVjtioCrSauVghw/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbzPBVNrrLXncCdoP7gddR4Asd6OmH5eJMxIfnTlvX6cxZYK2eUby91ggTaNzD8Hf4yD/exec', {
     method: 'POST',
     mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
+  }).then(() => {
+    document.getElementById('successMessage').style.display = 'block';
+    form.reset();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-
-  form.reset();
 });
 </script>
 
